@@ -252,3 +252,46 @@ Organisations:
 - **Electronic Industries Alliance (EIA)**: Known for standards related to electrical wiring, connectors, and 19-inch racks for networking equipment.
 - **Telecommunications Industry Association (TIA)**: Develops communication standards for radio equipment, cellular towers, VoIP, satellite communications, etc.
 - **International Telecommunications Union-Telecommunication Standardisation Sector (ITU-T)**: One of the largest and oldest communication standards organisations; defines standards for video compression, IPTV, and broadband communications (e.g., DSL).
+
+---
+#### 3.6.1 Segmenting Messages
+
+- **Problem**: Sending large, uninterrupted data streams (e.g., video, large email) across a network causes delays for others and total retransmission if a link fails.
+- **Solution**: **Segmentation** – dividing data into smaller, manageable units (IP packets) for transmission.
+- **Benefits of Segmentation**: speed and efficiency.
+#### 3.6.2 Sequencing
+
+- **Challenge of Segmentation**: Segments might arrive out-of-order.
+- **Solution**: **Sequencing** – attaching a sequence number to each segment.
+- **Responsibility**: **TCP** is responsible for sequencing segments to allow the receiver to reassemble the original message correctly.
+---
+#### **Address Purposes**:
+
+- **Network Layer Addresses (IP)**: Deliver the IP packet from the **original source** to the **final destination** (can be on same or remote network).
+- **Data Link Layer Addresses (MAC)**: Deliver the data link frame from one **NIC** to another **NIC on the same network**.
+##### Data Link Addresses 
+
+- **Purpose**: To deliver the data link frame from **NIC-to-NIC** on the **same network**.
+- **Encapsulation**: Before IP packets are sent over a medium, they are encapsulated in a data link frame.
+- **Hop-by-Hop**: As an IP packet travels through the network (host-to-router, router-to-router, router-to-host), it's repeatedly encapsulated in _new_ data link frames at each hop.
+- **Frame Contents**:
+    - **Source data link address**: Physical address of the sending NIC for _that specific hop_.
+    - **Destination data link address**: Physical address of the receiving NIC for _that specific hop_ (either the next router or the final destination device).
+
+#### Role of Data Link Layer Addresses - Same IP Network
+
+- When sender and receiver are on the **same network**, the data link frame is sent **directly** to the receiving device.
+- **Ethernet MAC Addresses**: Data link addresses for Ethernet networks, physically embedded on NICs.
+- **Frame Contains**:
+    - **Source MAC address**: MAC of the sending NIC.
+    - **Destination MAC address**: MAC of the receiving NIC (of the final destination device).
+    
+#### 3.7.7 Role of the Data Link Layer Addresses - Different IP Networks
+
+- When the destination is on a **different network**, the Ethernet frame **cannot be sent directly** to the final destination.
+- The frame is sent to the **default gateway (router)** on the sender's local network.
+- **Frame Contains**:
+    - **Source MAC address**: MAC of the sending device's NIC (e.g., PC1's MAC).
+    - **Destination MAC address**: MAC of the **default gateway's** interface on the sender's local network.
+-  **Router Action**: The router removes the old Layer 2 info, processes the IP packet, and adds _new_ Layer 2 info for the next hop (another router or the final destination) before forwarding.
+- **Default Gateway Importance**: Every host must be configured with its default gateway's IP address to send packets to remote networks.
