@@ -16,6 +16,8 @@
 - `show etherchannel summary`
 - `shutdown` // `no shutdown`
 - `show interfaces port-channel 1`
+- `show ip protocols`
+- `show ip ospf interface g0/1`
  
 ---
 
