@@ -18,6 +18,8 @@
 - `show interfaces port-channel 1`
 - `show ip protocols`
 - `show ip ospf interface g0/1`
+- `show ip ospf interface brief`
+- `show controllers` -> can view DCE / DTE sides
  
 ---
 
@@ -35,6 +37,11 @@
 - `vtp domain cisco`
 - `vtp mode client / transparent`
 - `vtp version 2`
+- `ip ospf cost 1000`
+- `bandwidth 10000`
+- `ipv6 address <address along side prefix /x >`
+- `ipv6 unicast-routing`
+- `ipv6 enable` -> to enable link local addresses
 
 #### Line Config Mode:
 
