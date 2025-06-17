@@ -20,6 +20,11 @@
 - `show ip ospf interface g0/1`
 - `show ip ospf interface brief`
 - `show controllers` -> can view DCE / DTE sides
+- `show ipv6 neighbour table` -> view MAC address table
+- `ipconfig /all`
+- `show hosts` -> dns show records
+- `show ip dhcp binding`
+
  
 ---
 
@@ -42,6 +47,7 @@
 - `ipv6 address <address along side prefix /x >`
 - `ipv6 unicast-routing`
 - `ipv6 enable` -> to enable link local addresses
+- `ipv6 address autoconfig` -> SLAAC
 
 #### Line Config Mode:
 
