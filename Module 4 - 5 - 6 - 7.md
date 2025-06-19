@@ -113,8 +113,9 @@
 - **Divided into two sublayers:
 	1. **LLC** -> Logical Link Control: IEEE 802.2 
 		- communicates between the networking software at the upper layers and the device hardware at the lower layers.
+		-  It **places information in the frame that identifies which network layer protocol is being used for the frame**. This information allows multiple Layer 3 protocols, such as IPv4 and IPv6, to use the same network interface and media.
 	2. **MAC Sublayer**: IEEE 802.3(Ethernet), 802.11(WLAN), or 802.15(WPAN)
-		- responsible for data encapsulation and media access control.
+		- responsible for data **encapsulation and media access control.**
 
 
 ###### At each hop along the path, a router performs the following Layer 2 functions:

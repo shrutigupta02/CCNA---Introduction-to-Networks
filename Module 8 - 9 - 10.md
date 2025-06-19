@@ -3,6 +3,15 @@
 - IPv6 : 128 bits
   
 ### IPv4:
+multicast - 224.0.0.0 to 239.255.255.255
+
+### Private IP:
+1. 10.0.0.0/8
+2. 172.16.0.0/12 - {last 172.31.255.255}
+3. 192.168.0.0/24
+#### Loopback - 127.0.0.0/8
+#### Link Local - 169.254.0.0/
+
 Classful IP addressing:
 - no IP address starts from 0 OR ends with 0
 
