@@ -1,103 +1,118 @@
-## Privileged Access Mode:
+## Categorized CLI Command Tables for IP Configuration and Network Management
 
-#### `enable` -> enter into priv access mode
-
-- `ping -l <size> <address>`
-- `show running-config` 
-- `show ip arp` - on router
-- `copy running-config startup-config` -> save data in *NVRAM*
-- `show ip route`
-- `show vlan brief` -> displays vlans info
-- `show interfaces status`
-- `show interfaces trunk`
-- `show vtp status`
-- `show spanning-tree`
-- `show spanning-tree vlan 1`
-- `spanning tree vlan 1 root primary`
-- `show interfaces | include Ethernet`
-- `show etherchannel summary`
-- `shutdown` // `no shutdown`
-- `show interfaces port-channel 1`
-- `show ip protocols`
-- `show ip ospf interface g0/1`
-- `show ip ospf interface brief`
-- `show controllers` -> can view DCE / DTE sides
-- `show ipv6 neighbour table` -> view MAC address table
-- `ipconfig /all`
-- `show hosts` -> dns show records
-- `show ip dhcp binding`
-
- 
 ---
 
-## Global Config Mode:
+### 🔧 **Windows Host Configuration Commands**
 
-**To run user priv commands from global config append `do` before all commands.**
-#### `configure terminal `-> enter into global config mode
+|**Command**|**Description**|
+|---|---|
+|`ipconfig`|Shows basic IP config info|
+|`ipconfig /all`|Shows detailed IP and MAC info|
+|`ipconfig /release`|Releases current IP address|
+|`ipconfig /renew`|Renews IP address from DHCP|
+|`ipconfig /displaydns`|Displays DNS resolver cache|
+|`arp -a`|Shows ARP table (IP-to-MAC mappings)|
+|`netsh interface ip delete arpcache`|Clears the ARP cache|
 
-- `hostname <name>` -> changes name of device 
-- `enable secret <password>` -> sets password, secret password holds higher priority than "enable password"
-- `service password-encryption` -> encrypts all current passwords in running config
-- `banner motd #<banner message>#` -> gives a welcome message shown on terminal, the hash before and after message isnt necessarily a hash, it can be any delimiter that is not part of the message.
-- `ip route [destination network] [subnet mask] [next hop IP address or exit interface]` -> static route config
-- `ip routing` -> enables L3 routing on multiswitch
-- `vtp domain cisco`
-- `vtp mode client / transparent`
-- `vtp version 2`
-- `ip ospf cost 1000`
-- `bandwidth 10000`
-- `ipv6 address <address along side prefix /x >`
-- `ipv6 unicast-routing`
-- `ipv6 enable` -> to enable link local addresses
-- `ipv6 address autoconfig` -> SLAAC
 
-#### Line Config Mode:
+---
 
-- `line console 0password <password>; login` -> can password protect console 0 or 1 or 2 on switch from this command
-- `line vty <0> <n>` -> n can be 4 or 15 (n=4 -> makes 5 users, similarly n=15 -> 16 users), enters line config mode to set virtual terminal access to switch users and passwords
+### 🌐 **Common Cisco IOS Show Commands**
 
-### Basic Router Configuration Steps
+|**Command**|**Description**|
+|---|---|
+|`show running-config`|Shows current config in RAM|
+|`show interfaces`|Displays detailed interface status|
+|`show ip interface`|IP config and interface status|
+|`show arp`|ARP cache entries|
+|`show ip route`|Routing table|
+|`show protocols`|Protocol status on interfaces|
+|`show version`|IOS version and device info|
+|`show cdp neighbors`|Lists directly connected Cisco devices|
+|`show cdp neighbors detail`|IP + platform details of neighbors|
+|`show ip interface brief`|Summary of IP and interface status|
 
-The following tasks should be completed when configuring initial settings on a router.
+---
 
-1. Configure the device name.
+### 🚀 **Privileged EXEC Mode Commands**
 
+| **Command**                         | **Description**                       |
+| ----------------------------------- | ------------------------------------- |
+| `enable`                            | Enters privileged EXEC mode           |
+| `ping -l <size> <address>`          | Pings with custom packet size         |
+| `show vlan brief`                   | VLAN configuration summary            |
+| `show interfaces status`            | Interface status and port mode        |
+| `show interfaces trunk`             | Displays trunk links                  |
+| `show vtp status`                   | VTP version and mode                  |
+| `show spanning-tree`                | Global STP info                       |
+| `show spanning-tree vlan 1`         | STP info for VLAN 1                   |
+| `spanning-tree vlan 1 root primary` | Set device as primary root for VLAN 1 |
+| `show interfaces include Ethernet`  |                                       |
+| `show etherchannel summary`         | Displays EtherChannel status          |
+| `shutdown` / `no shutdown`          | Disables / enables an interface       |
+| `show interfaces port-channel 1`    | EtherChannel port details             |
+| `show ip protocols`                 | Shows routing protocols in use        |
+| `show ip ospf interface g0/1`       | OSPF interface details                |
+| `show ip ospf interface brief`      | Summary of OSPF interfaces            |
+| `show controllers`                  | View DCE/DTE sides                    |
+| `show ipv6 neighbor`                | Shows IPv6 MAC mappings               |
+| `ipconfig /all`                     | (Windows) MAC and IP details          |
+| `show hosts`                        | Displays DNS host entries             |
+| `show ip dhcp binding`              | DHCP address bindings                 |
+
+---
+
+### ⚙️ **Global Configuration Mode Commands**
+
+|**Command**|**Description**|
+|---|---|
+|`configure terminal`|Enters global config mode|
+|`hostname <name>`|Sets device name|
+|`enable secret <password>`|Sets encrypted password for enable mode|
+|`service password-encryption`|Encrypts passwords in config|
+|`banner motd #<msg>#`|Message of the Day banner|
+|`ip route <dest> <mask> <next-hop>`|Static routing|
+|`ip routing`|Enables L3 routing on switch|
+|`vtp domain cisco`|Sets VTP domain|
+|`vtp mode client` / `transparent`|Sets VTP mode|
+|`vtp version 2`|Sets VTP version|
+|`ip ospf cost 1000`|Sets OSPF cost metric|
+|`bandwidth 10000`|Sets interface bandwidth|
+|`ipv6 address <addr>/<prefix>`|Assigns IPv6 address|
+|`ipv6 unicast-routing`|Enables IPv6 routing|
+|`ipv6 enable`|Enables link-local addressing|
+|`ipv6 address autoconfig`|Enables SLAAC (stateless autoconfig)|
+
+---
+
+### 🧾 **Line Configuration Mode Commands**
+
+| **Command**                  | **Description**                                  |
+| ---------------------------- | ------------------------------------------------ |
+| `line console 0`             | Enters console line config mode                  |
+| `password <pwd>; login`      | Sets password and enables login for console line |
+| `line vty 0 4` / `0 15`      | VTY line config (Telnet/SSH access)              |
+| `transport input ssh telnet` |                                                  |
+
+---
+
+### 🛠️ **Basic Router Initial Setup
+
+```bash
+Router(config)# hostname RouterName
+Router(config)# enable secret <password>
+Router(config)# line console 0
+Router(config-line)# password <password>
+Router(config-line)# login
+Router(config)# line vty 0 4
+Router(config-line)# password <password>
+Router(config-line)# login
+Router(config-line)# transport input ssh
+Router(config-line)# exit
+Router(config)# service password-encryption
+Router(config)# banner motd #Welcome to the Router#
+Router(config)# end
+Router# copy running-config startup-config
 ```
-Router(config)# hostname hostname
-```
 
-2. Secure privileged EXEC mode.
-
-```
-Router(config)# enable secret password
-```
-
-3. Secure user EXEC mode.
-
-```
-  Router(config)# line console 0    Router(config-line)# password password    Router(config-line)# login
-```
-
-4. Secure remote Telnet / SSH access.
-
-```
-  Router(config-line)# line vty 0 4    Router(config-line)# password   password    Router(config-line)# login    Router(config-line)# transport input {    ssh   | telnet}
-```
-
-5. Secure all passwords in the config file.
-
-```
-  Router(config-line)# exit    Router(config)# service password-encryption
-```
-
-6. Provide legal notification.
-
-```
-Router(config)# banner motd delimiter message delimiter
-```
-
-7. Save the configuration.
-
-```
-  Router(config)# end    Router# copy running-config startup-config
-```
+Let me know if you'd like this exported as PDF, Markdown, or something more interactive!
