@@ -116,3 +116,29 @@ Router# copy running-config startup-config
 ```
 
 Let me know if you'd like this exported as PDF, Markdown, or something more interactive!
+
+## VLAN commands:
+|**Command**|**Purpose**|**Mode**|
+|---|---|---|
+|`vlan <vlan-id>`|Creates a VLAN with the specified ID|Global Configuration|
+|`vlan 100,102,105-107`|Creates multiple VLANs at once|Global Configuration|
+|`name <vlan-name>`|Names the VLAN (e.g., `name student`)|VLAN Configuration|
+|`interface <interface-id>`|Enters interface configuration for the given port|Global Configuration|
+|`interface range <range>`|Configures a range of interfaces|Global Configuration|
+|`switchport mode access`|Sets the port to access mode (non-trunk)|Interface Configuration|
+|`switchport access vlan <vlan-id>`|Assigns the port to a specific VLAN|Interface Configuration|
+|`no switchport access vlan`|Resets the port to default VLAN 1|Interface Configuration|
+|`switchport voice vlan <vlan-id>`|Assigns a voice VLAN to the interface|Interface Configuration|
+|`mls qos trust cos`|Enables QoS and trusts CoS value for voice|Interface Configuration|
+|`show vlan`|Displays all VLANs configured|Privileged EXEC|
+|`show vlan brief`|Summarized list of VLANs and assigned ports|Privileged EXEC|
+|`show vlan id <vlan-id>`|Displays details about a specific VLAN|Privileged EXEC|
+|`show vlan name <vlan-name>`|Displays VLAN details by name|Privileged EXEC|
+|`show vlan summary`|Displays VLAN count summary|Privileged EXEC|
+|`show interfaces <interface-id> switchport`|Displays VLAN and mode info of the interface|Privileged EXEC|
+|`show interfaces vlan <vlan-id>`|Displays interface info for SVI VLAN (if configured)|Privileged EXEC|
+|`no vlan <vlan-id>`|Deletes a specific VLAN|Global Configuration|
+|`delete flash:vlan.dat` or `delete vlan.dat`|Deletes all VLANs (vlan.dat file)|Privileged EXEC|
+|`erase startup-config`|Deletes startup configuration|Privileged EXEC|
+|`reload`|Reloads the switch after deletion|Privileged EXEC|
+
